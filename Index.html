@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Baloo 2',cursive;
+  background:#ffe6f2;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+.container{
+  text-align:center;
+  padding:30px 20px;
+  width:100%;
+  max-width:420px;
+  position:relative;
+}
+h1{
+  color:#ff4fa3;
+  font-size:2.5rem;
+  margin-bottom:10px;
+}
+.sub{
+  color:#ff69b4;
+  font-size:1.2rem;
+  margin-bottom:6px;
+}
+.insta{
+  color:#d63384;
+  font-size:1.05rem;
+  margin-bottom:18px;
+}
+#countdown{
+  background:white;
+  border:4px solid #ffb6d9;
+  border-radius:24px;
+  padding:18px;
+  color:#ff4fa3;
+  font-size:1.35rem;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(255,105,180,.18);
+}
+.cake{
+  font-size:5rem;
+  margin-top:22px;
+  animation:bounce 1.8s infinite;
+}
+.emojis{
+  font-size:1.8rem;
+  margin-top:16px;
+}
+.balloon{
+  position:fixed;
+  font-size:3rem;
+}
+.tl{top:10px;left:10px}
+.tr{top:10px;right:10px}
+.bl{bottom:10px;left:10px}
+.br{bottom:10px;right:10px}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+</style>
+</head>
+<body>
+<div class="balloon tl">🎈</div>
+<div class="balloon tr">🎀</div>
+<div class="balloon bl">🎈</div>
+<div class="balloon br">🎀</div>
+
+<div class="container">
+  <h1>Happy Birthday</h1>
+  <div class="sub">Thermometer</div>
+  <div class="insta">Insta ID: @_himani.0531</div>
+
+  <div id="countdown">Loading...</div>
+
+  <div class="cake">🎂</div>
+  <div class="emojis">🎉 🩷 ✨ 🎊 💖 🥳 🌸 🎁 💕</div>
+</div>
+
+<script>
+const target = new Date("August 3, 2026 00:00:00").getTime();
+function update(){
+  const now = new Date().getTime();
+  const diff = target - now;
+  if(diff <= 0){
+    document.getElementById("countdown").innerHTML = "🎉 It\'s Birthday Time! 🎉";
+    return;
+  }
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+  document.getElementById("countdown").innerHTML =
+    d + " Days<br>" + h + " Hours " + m + " Minutes " + s + " Seconds";
+}
+update();
+setInterval(update,1000);
+</script>
+</body>
+</html>
